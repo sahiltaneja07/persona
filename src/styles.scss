@@ -62,3 +62,21 @@ ul{
         margin: 3px 0 0;
     }
 }
+
+.dndPlaceholder {
+    height: 56px;
+    box-sizing: border-box;
+    border: 1px dashed #9CDBFB;
+    border-radius: 2px;
+    background-color: #F0F8FC;
+    text-align: center;
+    line-height: 56px;
+    margin-bottom: 16px;
+    span {
+        height: 18px;
+        color: #646E6E;
+        font-family: "Source Sans Pro";
+        font-size: 14px;
+        font-style: italic;
+    }
+}

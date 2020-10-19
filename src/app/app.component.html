@@ -39,18 +39,27 @@
           </div>
         </div>
         <div class="form-content">
-          <div class="left-content">
-            <div class="white-column image-column">
-              <button type="button" class="setting-button"><i class="fas fa-cog"></i></button>
-              <h5>Image</h5>
-              <div class="imgb">
+          <div class="left-content" dndDropzone (dndDrop)="onDrop($event, leftElements)">
+            <div class="dndPlaceholder" dndPlaceholderRef>
+              <span>Insert element here</span>
+            </div>
+
+            <div class="white-column" *ngFor="let ele of leftElements; let i=index" [ngClass]="{'image-column': ele.type === 'image'}"
+              [dndDraggable]="ele"
+              [dndEffectAllowed]="'move'"
+              (dndMoved)="onDragged(i, 'move', leftElements)"
+              (dndCanceled)="onDragged(i, 'none', leftElements)">
+              <button type="button" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
+              <h5>{{ele.field.indexOf('_') ? ele.field.split('_').join(' ') : ele.field}}</h5>
+              <div class="imgb" *ngIf="ele.type === 'image'">
                 <input type="file" class="file-input" />
                 <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
                   to upload an image.</div>
               </div>
+              <input type="text" *ngIf="ele.type === 'short_text'" class="text-input" placeholder="Enter text..." />
+              <textarea *ngIf="ele.type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
             </div>
-
-            <div class="white-column">
+            <!-- <div class="white-column">
               <button type="button" class="setting-button"><i class="fas fa-cog"></i></button>
               <h5>Age</h5>
               <input type="text" class="text-input" placeholder="Enter text..." />
@@ -65,11 +74,34 @@
             <div class="white-column image-column">
               <button type="button" class="setting-button"><i class="fas fa-cog"></i></button>
               <h5>Mood Images</h5>
-              <div class="imgb"></div>
-            </div>
+              <div class="imgb">
+                <input type="file" class="file-input" />
+                <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
+                  to upload an image.</div>
+              </div>
+            </div> -->
           </div>
-          <div class="right-content">
-            <div class="white-column">
+          <div class="right-content" dndDropzone (dndDrop)="onDrop($event, rightElements)">
+            <div class="dndPlaceholder" dndPlaceholderRef>
+              <span>Insert element here</span>
+            </div>
+
+            <div class="white-column" *ngFor="let ele of rightElements; let i=index" [ngClass]="{'image-column': ele.type === 'image'}"
+              [dndDraggable]="ele"
+              [dndEffectAllowed]="'move'"
+              (dndMoved)="onDragged(i, 'move', rightElements)"
+              (dndCanceled)="onDragged(i, 'none', rightElements)">
+              <button type="button" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
+              <h5>{{ele.field.indexOf('_') ? ele.field.split('_').join(' ') : ele.field}}</h5>
+              <div class="imgb" *ngIf="ele.type === 'image'">
+                <input type="file" class="file-input" />
+                <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
+                  to upload an image.</div>
+              </div>
+              <input type="text" *ngIf="ele.type === 'short_text'" class="text-input" placeholder="Enter text..." />
+              <textarea *ngIf="ele.type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
+            </div>
+            <!-- <div class="white-column">
               <button type="button" class="setting-button"><i class="fas fa-cog"></i></button>
               <h5>Occupation</h5>
               <input type="text" class="text-input" placeholder="Enter text..." />
@@ -97,7 +129,8 @@
               <button type="button" class="setting-button"><i class="fas fa-cog"></i></button>
               <h5>Description</h5>
               <textarea class="text-input textarea" placeholder="Enter text..."></textarea>
-            </div>
+            </div> -->
+            
           </div>
         </div>
       </div>
@@ -119,7 +152,13 @@
         <p>You can reorder the elements by dragging them.</p>
       </div>
       <div class="card-list">
-        <div class="card"><h5 class="icon">Abc</h5> <span class="txt">Short text</span></div>
+        <div class="card" *ngIf="showShortText"
+          [dndDraggable]="extraElement"
+          [dndEffectAllowed]="'move'"
+          (dndMoved)="onDragged(null, 'move')"
+          (dndCanceled)="onDragged(null, 'none')">
+          <h5 class="icon">Abc</h5> <span class="txt">Short text</span>
+        </div>
         <div class="card"><p class="icon">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p> <span class="txt">Long text</span></div>
         <div class="card"><i class="fas fa-image icon"></i> <span class="txt">image</span></div>
         <div class="card"><i class="fas fa-file-image-o icon"></i> <span class="txt">image gallery</span></div>
