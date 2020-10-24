@@ -16,46 +16,46 @@
             </div>
           </div>
           <div class="form-content">
-            <div class="left-content" dndDropzone (dndDrop)="onDrop($event, leftElements)">
+            <div class="left-content" dndDropzone (dndDrop)="onDrop($event, leftFields)">
               <div class="dndPlaceholder" dndPlaceholderRef>
                 <span>Insert element here</span>
               </div>
   
-              <div class="white-column" *ngFor="let ele of leftElements; let i=index" [ngClass]="{'image-column': ele.type === 'image'}"
-                [dndDraggable]="ele"
+              <div class="white-column" *ngFor="let item of leftFields; let i=index" [ngClass]="{'image-column': item.field_type === 'image'}"
+                [dndDraggable]="item"
                 [dndEffectAllowed]="'move'"
-                (dndMoved)="onDragged(i, 'move', leftElements)"
-                (dndCanceled)="onDragged(i, 'none', leftElements)">
+                (dndMoved)="onDragged(i, 'move', leftFields, item)"
+                (dndCanceled)="onDragged(i, 'none', leftFields, item)">
                 <button type="button" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
-                <h5>{{ele.field.indexOf('_') ? ele.field.split('_').join(' ') : ele.field}}</h5>
-                <div class="imgb" *ngIf="ele.type === 'image'">
+                <h5>{{item.field.indexOf('_') ? item.field.split('_').join(' ') : item.field}}</h5>
+                <div class="imgb" *ngIf="item.field_type === 'image'">
                   <input type="file" class="file-input" />
                   <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
                     to upload an image.</div>
                 </div>
-                <input type="text" *ngIf="ele.type === 'short_text'" class="text-input" placeholder="Enter text..." />
-                <textarea *ngIf="ele.type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
+                <input type="text" *ngIf="item.field_type === 'short_text'" class="text-input" placeholder="Enter text..." />
+                <textarea *ngIf="item.field_type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
               </div>
             </div>
-            <div class="right-content" dndDropzone (dndDrop)="onDrop($event, rightElements)">
+            <div class="right-content" dndDropzone (dndDrop)="onDrop($event, rightFields)">
               <div class="dndPlaceholder" dndPlaceholderRef>
                 <span>Insert element here</span>
               </div>
   
-              <div class="white-column" *ngFor="let ele of rightElements; let i=index" [ngClass]="{'image-column': ele.type === 'image'}"
-                [dndDraggable]="ele"
+              <div class="white-column" *ngFor="let item of rightFields; let i=index" [ngClass]="{'image-column': item.field_type === 'image'}"
+                [dndDraggable]="item"
                 [dndEffectAllowed]="'move'"
-                (dndMoved)="onDragged(i, 'move', rightElements)"
-                (dndCanceled)="onDragged(i, 'none', rightElements)">
+                (dndMoved)="onDragged(i, 'move', rightFields, item)"
+                (dndCanceled)="onDragged(i, 'none', rightFields, item)">
                 <button type="button" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
-                <h5>{{ele.field.indexOf('_') ? ele.field.split('_').join(' ') : ele.field}}</h5>
-                <div class="imgb" *ngIf="ele.type === 'image'">
+                <h5>{{item.field.indexOf('_') ? item.field.split('_').join(' ') : item.field}}</h5>
+                <div class="imgb" *ngIf="item.field_type === 'image'">
                   <input type="file" class="file-input" />
                   <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
                     to upload an image.</div>
                 </div>
-                <input type="text" *ngIf="ele.type === 'short_text'" class="text-input" placeholder="Enter text..." />
-                <textarea *ngIf="ele.type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
+                <input type="text" *ngIf="item.field_type === 'short_text'" class="text-input" placeholder="Enter text..." />
+                <textarea *ngIf="item.field_type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
               </div>            
             </div>
           </div>

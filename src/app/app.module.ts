@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PersonaTemplateComponent } from './persona-template/persona-template.component';
-import { ElementsService } from './elements.service';
+import { FieldsService } from './fields.service';
+import { HttpService } from './http.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ElementsService } from './elements.service';
     BrowserModule,
     DndModule
   ],
-  providers: [ElementsService],
+  providers: [HttpService, FieldsService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

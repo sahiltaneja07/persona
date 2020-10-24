@@ -14,7 +14,7 @@
       </div>
       <div class="card-list">
         <div class="card" *ngIf="showShortText"
-          [dndDraggable]="extraElement"
+          [dndDraggable]="extraField"
           [dndEffectAllowed]="'move'"
           (dndMoved)="onDragged('move')"
           (dndCanceled)="onDragged('none')">

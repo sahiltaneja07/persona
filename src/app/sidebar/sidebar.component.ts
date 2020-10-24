@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import { ElementsService } from '../elements.service';
+import { FieldsService } from '../fields.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -9,16 +9,16 @@ import { ElementsService } from '../elements.service';
 })
 export class SidebarComponent {
     showShortText = true;
-    extraElement: any;
+    extraField: any;
     @Output() onItemDragged = new EventEmitter<any>();
 
-    constructor(private elementsService: ElementsService) {
-        this.extraElement = this.elementsService.getElements('extra');
+    constructor(private fieldsService: FieldsService) {
+        this.extraField = this.fieldsService.getFields(3)[0];
     }
 
     onDragged(effect: string) {
         if (effect === 'none') return;
-        this.onItemDragged.emit(this.extraElement);
+        this.onItemDragged.emit(this.extraField);
         this.showShortText = false;
     }
 
