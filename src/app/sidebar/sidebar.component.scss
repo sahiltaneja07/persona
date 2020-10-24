@@ -1,0 +1,100 @@
+.right-panel{
+    background: #F0F0F0;
+    width: 390px;
+    height: calc(100vh - 80px);
+    box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
+    border-radius: 2px 0 0 2px;
+    position: fixed;
+    right: 0;
+    top: 80px;
+
+    .rp-head{
+        height: 36px;
+        background: #DCDCDC;
+        padding: 11px 24px;
+        position: relative;
+        h4{
+            font-size: 12px;
+            color: #646E6E;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .close-btn{
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            border: none;
+            border-left: solid 1px #fff;
+            outline: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 17px;
+            color: #646E6E;
+        }
+    }
+
+    .rp-content{
+        padding: 24px;
+        h3{
+            font-size: 24px;
+            color: #3C4646;
+            font-weight: 300;
+            margin: 0;
+            padding: 0 0 22px;
+        }
+        .info-column{
+            background: #F0F8FC;
+            margin: 0 -24px;
+            padding: 10px 24px;
+            p{
+                font-size: 14px;
+                color: #646E6E;
+                line-height: 18px;
+                font-style: italic;
+                margin: 0;
+                padding: 0 0 5px;
+            }
+        }
+        .card-list{
+            margin-right: -16px;
+            padding: 24px 0 0;
+            .card{
+                width: 163px;
+                height: 112px;
+                background: #fff;
+                border-radius: 2px;
+                margin: 0 16px 16px 0;
+                padding: 0 16px;
+                float: left;
+                text-align: center;
+                .txt{
+                    font-size: 12px;
+                    color: #646E6E;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                }
+                .icon{
+                    height: 83px;
+                    display: block;
+                    font-size: 48px;
+                    line-height: 83px;
+                    color: #B1B6B6;
+                    font-weight: 300;
+                    margin: 0;
+                }
+                p.icon{
+                    font-size: 10px;
+                    line-height: 13px;
+                    padding: 10px 0 0;
+                }
+                i.icon{
+                    font-size: 35px;
+                }
+                h5.icon{
+                    line-height: 75px;
+                }
+            }
+        }
+    }
+}

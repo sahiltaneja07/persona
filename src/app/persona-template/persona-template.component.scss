@@ -1,0 +1,94 @@
+.content-container{
+    padding: 110px 115px;
+    .form-column{
+        background: #F0F0F0;
+        box-shadow: 0 20px 20px 0 rgba(0,0,0,0.1);
+        border-radius: 2px;
+
+        .form-header{
+            width: 100%;
+            display: flex;
+            background: #DCDCDC;
+            border-radius: 2px 2px 0 0;
+            padding: 16px;
+            .imgb{
+                width: 56px;
+                min-width: 56px;
+                height: 56px;
+                background-color: #F05A50;
+                // background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(240,240,240,0) 100%);
+                margin-right: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+            }
+            .short-name{
+                width: 128px;
+                min-width: 128px;
+                margin-left: 16px;
+            }
+            .white-column{
+                margin-bottom: 0;
+            }
+        }
+
+        .form-content{
+            width: 100%;
+            padding: 16px;
+            display: flex;
+            .left-content{
+                width: 200px;
+                min-width: 200px;
+                margin-right: 16px;
+            }
+            .right-content{
+                width: 100%;
+            }
+            .image-column{
+                .imgb{
+                    width: 100%;
+                    height: 176px;
+                    background: #F0F0F0;
+                    border: 1px dashed #DCDCDC;
+                    margin: 5px 0;
+                    position: relative;
+                    overflow: hidden;
+                    text-align: center;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate3d(-50%, -50%, 0);
+                        z-index: 9;
+                    }
+                    .upload-info{
+                        font-size: 14px;
+                        color: #646E6E;
+                        line-height: 18px;
+                        font-style: italic;
+                        padding: 50px 17px 0;
+                        i{
+                            display: block;
+                            font-size: 40px;
+                            color: #DCDCDC;
+                            margin-bottom: 7px;
+                        }
+                    }
+                    .file-input{
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        opacity: 0;
+                        z-index: 999;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
