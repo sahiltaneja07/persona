@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { DndModule } from 'ngx-drag-drop';
 
@@ -8,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PersonaTemplateComponent } from './persona-template/persona-template.component';
 import { FieldsService } from './fields.service';
 import { HttpService } from './http.service';
+import { PersonaService } from './persona-template/persona-template.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,11 @@ import { HttpService } from './http.service';
   ],
   imports: [
     BrowserModule,
-    DndModule
+    DndModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [HttpService, FieldsService],
+  providers: [HttpService, FieldsService, PersonaService],
   bootstrap: [AppComponent]
 })
 

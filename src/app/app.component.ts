@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     item: any;
+    showShortText = true;
     
     sendToPersona(item: any): void {
         this.item = item;
+        this.showShortText = false;
     }
 }

@@ -1,4 +1,4 @@
-<div class="content-container">
+<div class="content-container" *ngIf="persona">
     <div class="row">
       <div class="col-sm-7">
         <div class="form-column">
@@ -7,12 +7,12 @@
             <div class="white-column name">
               <button type="button" class="setting-button"></button>
               <h5>Persona name</h5>
-              <input type="text" class="text-input" placeholder="Enter text..." />
+              <input type="text" class="text-input" [(ngModel)]="persona.name" (focus)="onInputFocus('name', persona.name)" (blur)="onInputBlur('name', persona.name)" placeholder="Enter text..." />
             </div>
             <div class="white-column short-name">
               <button type="button" class="setting-button"></button>
               <h5>Short name</h5>
-              <input type="text" class="text-input" placeholder="Enter text..." />
+              <input type="text" class="text-input" [(ngModel)]="persona.initials" (focus)="onInputFocus('initials', persona.initials)" (blur)="onInputBlur('initials', persona.initials)" placeholder="Enter text..." />
             </div>
           </div>
           <div class="form-content">
@@ -26,15 +26,16 @@
                 [dndEffectAllowed]="'move'"
                 (dndMoved)="onDragged(i, 'move', leftFields, item)"
                 (dndCanceled)="onDragged(i, 'none', leftFields, item)">
-                <button type="button" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
+                <button type="button" *ngIf="item.field !== 'abc'" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
+                <button type="button" *ngIf="item.field === 'abc'" (click)="deleteField(item, leftFields, i)" class="setting-button"><i class="fas fa-trash"></i></button>
                 <h5>{{item.field.indexOf('_') ? item.field.split('_').join(' ') : item.field}}</h5>
                 <div class="imgb" *ngIf="item.field_type === 'image'">
                   <input type="file" class="file-input" />
                   <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
                     to upload an image.</div>
                 </div>
-                <input type="text" *ngIf="item.field_type === 'short_text'" class="text-input" placeholder="Enter text..." />
-                <textarea *ngIf="item.field_type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
+                <input type="text" *ngIf="item.field_type === 'short_text'" [(ngModel)]="item.data" (focus)="onInputFocus(item.field, item.data)" (blur)="onInputBlur(item.field, item.data)" class="text-input" placeholder="Enter text..." />
+                <textarea *ngIf="item.field_type === 'long_text'" [(ngModel)]="item.data" (focus)="onInputFocus(item.field, item.data)" (blur)="onInputBlur(item.field, item.data)" class="text-input textarea" placeholder="Enter text..."></textarea>
               </div>
             </div>
             <div class="right-content" dndDropzone (dndDrop)="onDrop($event, rightFields)">
@@ -47,15 +48,16 @@
                 [dndEffectAllowed]="'move'"
                 (dndMoved)="onDragged(i, 'move', rightFields, item)"
                 (dndCanceled)="onDragged(i, 'none', rightFields, item)">
-                <button type="button" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
+                <button type="button" *ngIf="item.field !== 'abc'" dndHandle class="setting-button"><i class="fas fa-cog"></i></button>
+                <button type="button" *ngIf="item.field === 'abc'" (click)="deleteField(item, rightFields, i)" class="setting-button"><i class="fas fa-trash"></i></button>
                 <h5>{{item.field.indexOf('_') ? item.field.split('_').join(' ') : item.field}}</h5>
                 <div class="imgb" *ngIf="item.field_type === 'image'">
                   <input type="file" class="file-input" />
                   <div class="upload-info"><i class="fas fa-image"></i>Drop a file here or click 
                     to upload an image.</div>
                 </div>
-                <input type="text" *ngIf="item.field_type === 'short_text'" class="text-input" placeholder="Enter text..." />
-                <textarea *ngIf="item.field_type === 'long_text'" class="text-input textarea" placeholder="Enter text..."></textarea>
+                <input type="text" *ngIf="item.field_type === 'short_text'" [(ngModel)]="item.data" (focus)="onInputFocus(item.field, item.data)" (blur)="onInputBlur(item.field, item.data)" class="text-input" placeholder="Enter text..." />
+                <textarea *ngIf="item.field_type === 'long_text'" [(ngModel)]="item.data" (focus)="onInputFocus(item.field, item.data)" (blur)="onInputBlur(item.field, item.data)" class="text-input textarea" placeholder="Enter text..."></textarea>
               </div>            
             </div>
           </div>
