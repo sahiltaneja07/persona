@@ -3,7 +3,8 @@
       <div class="col-sm-4">
         <div class="user-column">
           <div class="user-img"><i class="fas fa-user"></i></div>
-          <div class="user-name">Persona <b>Tess</b> <i class="fas fa-edit"></i></div>
+          <div class="user-name" *ngIf="!editMode">Persona <b>{{name}}</b> <i (click)="editMode = true" class="fas fa-edit"></i></div>
+          <div class="user-name" *ngIf="editMode">Persona <input type="text" class="header-input" [ngClass]="{'error': nameError}" [(ngModel)]="name" (keyup.enter)="saveName()" (blur)="saveName()" /></div>
         </div>
       </div>
       <div class="col-sm-8">

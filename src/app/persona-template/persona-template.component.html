@@ -4,7 +4,7 @@
         <div class="form-column">
           <div class="form-header">
             <div class="imgb"><i class="fas fa-female"></i></div>
-            <div class="white-column name">
+            <div class="white-column name" [ngClass]="{'error': nameError}">
               <button type="button" class="setting-button"></button>
               <h5>Persona name</h5>
               <input type="text" class="text-input" [(ngModel)]="persona.name" (focus)="onInputFocus('name', persona.name)" (blur)="onInputBlur('name', persona.name)" placeholder="Enter text..." />
