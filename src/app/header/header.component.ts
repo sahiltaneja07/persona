@@ -24,6 +24,7 @@ export class HeaderComponent implements OnChanges {
         this.nameError = false;
         this.editMode = false;
         this.onNameSave.emit(this.name);
+	console.log('save name');
     }
 
 }
